@@ -1,0 +1,33 @@
+name: "Task Item"
+description: "Create a task item under a main task"
+title: "[Task Item]: "
+labels: ["task item"]
+body:
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Task Item Overview"
+      description: "Provide a brief description of the task item."
+      placeholder: "What needs to be done?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Task Item Checklist"
+      description: "List the things needed to complete this task item."
+      placeholder: |
+        - [ ] Checklist 1
+        - [ ] Checklist 2
+        - [ ] Checklist 3
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_notes
+    attributes:
+      label: "Additional Notes"
+      description: "Any other relevant information?"
+      placeholder: "List any challenges, required dependencies, or additional factors to consider."
