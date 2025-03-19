@@ -1,75 +1,48 @@
----
 name: "Task"
-description: "Create a new task with a TODO checklist"
-title: "[Task] <Task Title>"
+description: "Create a new task with a task items checklist"
+title: "[Task]: "
+labels: ["task"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        ## Task Overview
-        Provide a brief description of the task.
-  
-  - type: textarea
-    id: description
-    attributes:
-      label: "Description"
-      description: "Describe the task in detail."
-      placeholder: "What needs to be done?"
-    validations:
-      required: true
-  
-  - type: checkboxes
-    id: todo
-    attributes:
-      label: "TODO List"
-      description: "Categorize the task into different areas."
-      options:
-        - label: "[backend] Define API requirements"
-        - label: "[backend] Implement API endpoint"
-        - label: "[backend] Write unit tests"
-        - label: "[backend] Refactor existing logic"
-        - label: "[frontend] Create UI components"
-        - label: "[frontend] Integrate API with UI"
-        - label: "[frontend] Fix UI/UX issues"
-        - label: "[frontend] Design/Update database schema"
-        - label: "[frontend] Write database migrations"
-        - label: "[frontend] Optimize queries"
-        - label: "[other] Update documentation"
-        - label: "[other] Code review and approval"
-        - label: "[other] Deploy changes"
-  
-  - type: input
-    id: assignee
-    attributes:
-      label: "Assignee"
-      description: "Who is responsible for this task?"
-      placeholder: "@github-username"
-  
+
   - type: dropdown
     id: priority
     attributes:
       label: "Priority"
       description: "Set the priority of this task."
       options:
-        - "Urgent (🚨 Must be fixed immediately, system-wide failure)"
-        - "Critical (🔥 Major functionality broken, urgent)"
-        - "High (⚠️ Needs attention soon, affects many users)"
-        - "Medium (⚖️ Standard priority, should be worked on next)"
-        - "Low (🛠️ Minor impact, not urgent)"
-        - "Trivial (🌀 Cosmetic or very low priority)"
-        - "Nice-to-Have (💡 Optional or future enhancement)"
-      default: "Medium (⚖️ Standard priority, should be worked on next)"
-  
-  - type: input
-    id: due_date
+        - "🚨 Urgent (Needed fixed immediately)"
+        - "🔥 Critical (Major functionality broken)"
+        - "⚠️ High (Needs attention soon)"
+        - "⚖️ Medium (Standard priority)"
+        - "🛠️ Low (Minor impact)"
+        - "🌀 Trivial (Cosmetic or very low priority)"
+        - "💡 Nice-to-Have (Optional or future enhancement)"
+      default: 3
+
+  - type: textarea
+    id: description
     attributes:
-      label: "Due Date"
-      description: "Specify a due date if applicable (YYYY-MM-DD)."
-      placeholder: "YYYY-MM-DD"
-  
+      label: "Task Overview"
+      description: "Provide a brief description of the task."
+      placeholder: "What needs to be done?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: todo
+    attributes:
+      label: "Task Checklist"
+      description: "List the things needed to complete this task."
+      placeholder: |
+        - [ ] Task Item 1
+        - [ ] Task Item 2
+        - [ ] Task Item 3
+    validations:
+      required: true
+
   - type: textarea
     id: additional_notes
     attributes:
       label: "Additional Notes"
       description: "Any other relevant information?"
-      placeholder: "Mention any blockers, dependencies, or other considerations."
+      placeholder: "List any challenges, required dependencies, or additional factors to consider."
